@@ -55,7 +55,7 @@ namespace GetAPILogsfromServers
             /*   get
             {
                 return Task.Run(async () =>
-                        await keyvault.GetSecretValue(CloudConfigurationManager.GetSetting("UserAccountPassword"))).Result;
+                        await keyvault.GetSecretValue(CloudConfigurationManager.GetSetting("UserAccountPassword"))).Result.ConvertToString();
             } */
            
         }
