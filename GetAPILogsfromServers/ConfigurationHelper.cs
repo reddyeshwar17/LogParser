@@ -35,7 +35,7 @@ namespace GetAPILogsfromServers
             get
             {
                 return Task.Run(async () =>
-                        await keyvault.GetSecretValue("POLifeCycleAccountName")).Result.ConvertToString();
+                        await keyvault.GetSecretValue("POLCName")).Result.ConvertToString();
             }
         }
 
@@ -47,10 +47,16 @@ namespace GetAPILogsfromServers
             get
             {
                 SecureString str= Task.Run(async () =>
-                        await keyvault.GetSecretValue("POLifeCycleAccountPassword")).Result;
+                        await keyvault.GetSecretValue("POLCPassword")).Result;
                 string password = new System.Net.NetworkCredential(string.Empty, str).Password;
                 return str;
             }
+            
+            /*   get
+            {
+                return Task.Run(async () =>
+                        await keyvault.GetSecretValue(CloudConfigurationManager.GetSetting("UserAccountPassword"))).Result;
+            } */
            
         }
 
@@ -62,7 +68,7 @@ namespace GetAPILogsfromServers
             get
             {
                 return Task.Run(async () =>
-                        await keyvault.GetSecretValue("POLifeCycleAccountDomain")).Result.ConvertToString();
+                        await keyvault.GetSecretValue("POLCDomain")).Result.ConvertToString();
             }
         }
     }
